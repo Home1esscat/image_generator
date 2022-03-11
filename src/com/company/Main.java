@@ -21,7 +21,7 @@ import java.util.Scanner;
 public class Main {
 
     //Chat_id с телеграмма
-    private static final String chat_id = "5247513311";
+    private static final String chat_id = "177794633";
 
     public static void main(String[] args) {
 
@@ -29,11 +29,11 @@ public class Main {
         int current_excise = 696165;
 
         //Необходимое количество фотографий
-        int photos_required = 10;
+        int photos_required = 1;
 
         for (int i = 1; i <= photos_required; i++) {
             try {
-                Thread.sleep(120000);
+                Thread.sleep(121);
                 generateImage(current_excise, i);
             } catch (Exception e) {
                 System.out.print("Something went wrong while generation process");
@@ -112,7 +112,7 @@ public class Main {
 
     public static void sendRequestToServer(String bigBoy) {
 
-        String httpsURL = "/receiveimagefromincust";
+        String httpsURL = "https://bot.myglo.com.ua/api/image/receiveimagefromincust";
         String generalString = "\"data:image/jpeg;base64, " + bigBoy + "\"";
         generalString = generalString.replace("\n", "").
                 replace("\r", "");
@@ -130,8 +130,8 @@ public class Main {
         //photos.add(generalString);
 
         String json = "{\"qrcode\":"+photos+",\"status\":\"success\",\"lang\":\"ua\"," +
-                "\"externalMask\":\"/images/mask.svg\",\"mode\":\"TakePhoto\"," +
-                "\"externalMaskViewPort\":\"95\",\"url\":\"/receiveimagefromincust\"," +
+                "\"externalMask\":\"https://incust.net/images/mask.svg\",\"mode\":\"TakePhoto\"," +
+                "\"externalMaskViewPort\":\"95\",\"url\":\"https://bot.myglo.com.ua/api/image/receiveimagefromincust\"," +
                 "\"user_chat_id\":"+chat_id+",\"rW\":\"720\",\"countPhotos\":\"3\",\"delayPhotos\":\"1000\"}";
 
 
@@ -147,7 +147,7 @@ public class Main {
             e.printStackTrace();
         }
 
-        con.setRequestProperty("Host",".com.ua");
+        con.setRequestProperty("Host","bot.myglo.com.ua");
         con.setRequestProperty("Connection","keep-alive");
         con.setRequestProperty("Content-Length", String.valueOf(json.length()));
         con.setRequestProperty("sec-ch-ua"," Not;A Brand\";v=\"99\", \"Google Chrome\";v=\"97\", \"Chromium\";v=\"97\"");
@@ -161,7 +161,7 @@ public class Main {
         con.setRequestProperty("Sec-Fetch-Site","cross-site");
         con.setRequestProperty("Sec-Fetch-Mode","cors");
         con.setRequestProperty("Sec-Fetch-Dest","empty");
-        con.setRequestProperty("Referer",".com/");
+        con.setRequestProperty("Referer","https://qr.incust.com/");
         con.setRequestProperty("Accept-Encoding","gzip, deflate, br");
         con.setRequestProperty("Accept-Language","ru-UA,ru;q=0.9,en-US;q=0.8,en;q=0.7,uk-UA;q=0.6,uk;q=0.5,ru-RU;q=0.4");
 
